@@ -1,0 +1,20 @@
+package com.wyg.test;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+public class DateTime {
+	public static void main(String[] args) throws ParseException {
+		String str = "2009-11-01 09:23:23.123";
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
+		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy年MM月dd日  hh时mm分ss秒SSS毫秒");
+		Date date = sdf1.parse(str);//字符串转为日期
+		Date newDate = new Date();
+		String Str = sdf2.format(date);
+		String newStr = sdf2.format(newDate);
+		System.out.println(Str);
+		System.out.println(newStr);
+	}
+
+}
