@@ -43,5 +43,4 @@ public class SimpleDateFormatDemo {
 		System.out.println(sdfd.getDateTime());
 		System.out.println(sdfd.getTimeStamp());
 	}
-
 }
