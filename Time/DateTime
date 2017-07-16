@@ -35,9 +35,7 @@ public class DateTime {
 		strBuf.append(this.addZero(calendar.get(Calendar.MILLISECOND), 3));
 		return strBuf.toString();
 	}
-	
-	
-	
+		
 	public static void main(String[] args) {
 		System.out.println(new DateTime().getDateTime());
 
