@@ -1,0 +1,99 @@
+package com.wyg.test;
+
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
+import java.util.Random;
+
+//对数字的操作
+public class NumberDemo {
+
+	//Math工具类的演示
+	public void math(){
+		System.out.println(Math.abs(-1));// == 1
+		System.out.println(Math.floor(1.5));// == 1.0  向下取整
+		System.out.println(Math.round(1.4));// == 1  四舍五入
+		System.out.println(Math.round(1.5));// == 2  四舍五入
+		System.out.println(Math.max(17, 11));// == 1 取最大值
+		System.out.println(Math.min(17, 11));// == 1 取最小值
+	}
+	
+	//Random类的演示
+	public void random(){
+		int i = 10;
+		while(i>0){
+			i--;
+			System.out.print(new Random().nextInt() + ",");//随机返回int范围内的任意int类型值
+		}
+		System.out.println();
+		i = 10;
+		while(i>0){
+			i--;
+			System.out.print(new Random().nextInt(100) + ",");//随机返回0 ~100范围内的任意int值
+		}
+		
+	}
+	
+	//NumberFormat数值格式的抽象基类
+	public void numberFormat(){
+		Double myNumber=23323.3323232323;
+		Double test=0.3434;
+		//返回当前缺省语言环境的缺省数值格式。
+		String myString = NumberFormat.getInstance().format(myNumber);
+		System.out.println("默认数值格式：" + myString);
+		
+		//返回当前缺省语言环境的通用格式
+		myString = NumberFormat.getCurrencyInstance().format(myNumber); 
+		System.out.println("通用数值格式：" + myString);
+		  
+		//getPercentInstance()  返回当前缺省语言环境的百分比格式。
+		myString = NumberFormat.getPercentInstance().format(test); 
+		System.out.println("百分比格式：" + myString);
+		
+		NumberFormat format = NumberFormat.getInstance();
+		//设置数值的小数部分允许的最大位数, 四舍五入
+		format.setMinimumFractionDigits(3);
+		//setMinimumFractionDigits(int) 设置数值的小数部分允许的最小位数。 
+		format.setMaximumIntegerDigits(3);
+		System.out.println(format.format(2132323213.23));
+		System.out.println(format.format(2132323213.23266));
+	}
+	
+	//DecimalFormat演示
+	public void decimalFormat(){
+		DecimalFormat df1 = new DecimalFormat("0.0");   
+		DecimalFormat df2 = new DecimalFormat("#.#");   
+		DecimalFormat df3 = new DecimalFormat("000.000");   
+		DecimalFormat df4 = new DecimalFormat("###.###");   
+		System.out.println(df1.format(12.34));   
+		System.out.println(df2.format(12.34));   
+		System.out.println(df3.format(12.34));   
+		System.out.println(df4.format(12.34)); 
+		
+		DecimalFormat format = new DecimalFormat("###,####.000");   
+		System.out.println(format.format(111111123456.1227222));   
+		  
+		Locale.setDefault(Locale.US);   
+		DecimalFormat usFormat = new DecimalFormat("###,###.000");   
+		System.out.println(usFormat.format(111111123456.1227222));   
+		  
+		DecimalFormat addPattenFormat = new DecimalFormat();   
+		addPattenFormat.applyPattern("##,###.000");   
+		System.out.println(addPattenFormat.format(111111123456.1227));   
+		  
+		DecimalFormat zhiFormat = new DecimalFormat();   
+		zhiFormat.applyPattern("0.###E0##"); //注意0不能够放在#后面  
+		System.out.println(zhiFormat.format(10000));   
+		System.out.println(zhiFormat.format(12345678.345));   
+		  
+		DecimalFormat percentFormat = new DecimalFormat();   
+		percentFormat.applyPattern("#0.000%");   
+		System.out.println(percentFormat.format(0.3052222));  
+	}
+	
+	public static void main(String[] args) {
+		NumberDemo nd = new NumberDemo();
+		nd.decimalFormat();
+	}
+
+}
