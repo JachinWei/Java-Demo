@@ -1,9 +1,12 @@
 package com.wyg.test;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
 import java.util.Random;
+import java.util.Scanner;
 
 //对数字的操作
 public class NumberDemo {
@@ -59,7 +62,7 @@ public class NumberDemo {
 		System.out.println(format.format(2132323213.23266));
 	}
 	
-	//DecimalFormat演示
+	//浮点数格式化演示 - DecimalFormat
 	public void decimalFormat(){
 		DecimalFormat df1 = new DecimalFormat("0.0");   
 		DecimalFormat df2 = new DecimalFormat("#.#");   
@@ -90,10 +93,77 @@ public class NumberDemo {
 		percentFormat.applyPattern("#0.000%");   
 		System.out.println(percentFormat.format(0.3052222));  
 	}
+
+	//大数演示 - BigInteger
+	public void bigInteger(){
+		int a=3;
+		BigInteger b=BigInteger.valueOf(a);//将参数转换为制定的类型 b = 3
+
+		String s="1117";
+		BigInteger c=BigInteger.valueOf(Long.parseLong(s));//结果 c = 1117
+
+		BigInteger d=new BigInteger("23");
+		BigInteger e=new BigInteger("32");
+		d.add(e);//大整数相加
+
+//		3.subtract(); 相减
+//		4.multiply(); 相乘
+//		5.divide(); 相除取整
+//		6.remainder(); 取余
+//		7.pow(); a.pow(b)=a^b
+//		8.gcd(); 最大公约数
+//		9.abs(); 绝对值
+//		10.negate(); 取反数
+//		11.mod(); a.mod(b)=a%b=a.remainder(b);
+//		12.max(); min();
+//		13.punlic int comareTo();
+//		14.boolean equals(); 是否相等
+//		15.BigInteger构造函数：
+//		一般用到以下两种：
+//		BigInteger(String val);
+//		将指定字符串转换为十进制表示形式；
+//		BigInteger(String val,int radix);
+//		将指定基数的 BigInteger 的字符串表示形式转换为 BigInteger
+//		Ⅱ.基本常量：
+//		A=BigInteger.ONE 1
+//		B=BigInteger.TEN 10
+//		C=BigInteger.ZERO 0
+//		Ⅲ.基本操作
+//		1. 读入：
+//		用Scanner类定义对象进行控制台读入,Scanner类在java.util.*包中
+		Scanner cin=new Scanner(System.in);// 读入
+		while(cin.hasNext()) //等同于!=EOF
+		{
+			int n;
+			BigInteger m;
+			n=cin.nextInt(); //读入一个int;
+			m=cin.nextBigInteger();//读入一个BigInteger;
+			System.out.print(m.toString());
+		}
+		 
+		
+//		if( a.compareTo(b) == 0 ) System.out.println("a == b"); //大整数a==b
+//		else if( a.compareTo(b) > 0 ) System.out.println("a > b"); //大整数a>b
+//		else if( a.compareTo(b) < 0 ) System.out.println("a < b"); //大整数a<b
+		//大整数绝对值
+	}
+	
+//	 1、用float或者double变量构建BigDecimal对象。
+//     2、通过调用BigDecimal的加，减，乘，除等相应的方法进行算术运算。
+//     3、把BigDecimal对象转换成float，double，int等类型。
+	public void bigDecimal(){
+		BigDecimal b1 = new BigDecimal(Double.toString(0.48));
+		BigDecimal b2 = BigDecimal.valueOf(0.48);
+		System.out.println(b1);
+		System.out.println(b2);
+		System.out.println(b1.subtract(b2).doubleValue());
+		System.out.println(b1.add(b2).doubleValue());
+	}
+	
 	
 	public static void main(String[] args) {
 		NumberDemo nd = new NumberDemo();
-		nd.decimalFormat();
+		nd.bigDecimal();
 	}
 
 }
