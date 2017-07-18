@@ -1,0 +1,62 @@
+package com.wyg.util;
+
+import java.lang.annotation.Documented;
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Inherited;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
+public class AnnotationDemo {
+	//1.使用类加载器加载类
+	public static void main(String[] args){
+		try {
+			Class c = Class.forName("com.wyg.util.Child");
+			//找到类上面的注解
+			if(c.isAnnotationPresent(Description.class)){
+				Description d = (Description)c.getAnnotation(Description.class);
+				System.out.println(d.age());
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	
+	
+	
+}
+
+class Child{
+	@Description(desc="name", author="wyg", age = 20)
+	public String name(){
+		return "child";
+	}
+	
+	@method
+	@Description(desc="output", author="wyg", age = 19)
+	public String output(){
+		return "output";
+	}
+	
+}
+
+
+//成员类型受限,只能为基本类型,String,Class,Annotation,Enumeration
+//如果注解只有一个成员，成员名必须为value(),使用时可忽略成员名和赋值号=
+//注解类可以没有成员，称为标识注解
+//
+@Target({ElementType.METHOD, ElementType.TYPE})//元注解，作用域声明,在方法或接口上的注解
+@Retention(RetentionPolicy.RUNTIME)//生命周期
+@Inherited //允许子类继承
+@Documented //生成javadoc时包含注解信息
+@interface Description{
+	String desc();//成员都为无参无异常声明
+	String author();//没默认值则必须赋值
+	int age() default 18;//默认值18
+}
+
+//仅做标识作用的注解类，无值
+@interface method{}
