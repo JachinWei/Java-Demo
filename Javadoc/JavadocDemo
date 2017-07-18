@@ -1,0 +1,51 @@
+package com.wyg.util;
+/**
+ * 
+ * @author wyg
+ * @version 1.0
+ * 这是一个演示如何使用javadoc的类
+ */
+public class JavadocDemo {
+	/**
+	 * 这是一个变量
+	 */
+	public int a = 0;
+	
+	/**
+	 * 这是一个常量PI=3.14
+	 */
+	final static double PI = 3.14;
+	
+	/** 
+	 * @param args 传入的字符串数组 
+	 * 这是一个main方法
+	 * */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	}
+	
+	/**
+	 * 这是一个受保护的方法
+	 * @return 1 这是1
+	 */
+	protected int protectedMethod(){
+		return 1;
+	}
+	
+	/**
+	 * 这是一个私有方法
+	 * @return 2 这是2
+	 */
+	@SuppressWarnings("unused")
+	private int privateMethod(){
+		return 2;
+	}
+	
+	/**
+	 * 这是一个公有的方法
+	 * @return 3 这是3
+	 */
+	public int publicMethod(){
+		return 3;
+	}
+}
